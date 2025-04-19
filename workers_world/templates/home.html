@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <title>workers world</title>
+</head>
+<header>
+    <div class="head">
+        <img src="{% static 'media/1.jpeg' %}" alt="Image 1" class="head-img">
+        <h2>Workers World</h2>
+        <img src="{% static 'media/1.jpeg' %}" alt="Image 2" class="head-img">
+    </div>
+    <div class="nav">
+        <h3>welcome {{request.user.first_name}}</h3>
+        <button class="btn"><a href="login.html">logout</a></button>
+
+    </div>
+</header>
+
+
+
+<body>
+    <section>
+        <div class="container">
+            <h1>Electriction</h1>
+            <a href="electriction">
+                <img src="{% static 'media/1.jpeg' %}" alt="Image 5" class="eslide">
+            </a>
+        </div>
+
+        <div class="container">
+            <h1>plumber</h1>
+            <a href="plumber">
+                <img src="{% static 'media/1.jpeg' %}" alt="Image 5" class="eslide">
+            </a>
+        </div>
+
+        <div class="container">
+            <h1>Carpenter</h1>
+            <a href="carpenter">
+                <img src="{% static 'media/1.jpeg' %}" alt="Image 5" class="eslide">
+            </a>
+        </div>
+
+        <div class="container">
+            <h1>Teacher</h1>
+            <a href="teacher">
+                <img src="{% static 'media/1.jpeg' %}" alt="Image 5" class="eslide">
+            </a>
+        </div>
+
+    </section>
+    <section>
+
+        <div class="container">
+            <h1>Driver</h1>
+            <a href="driver">
+                <img src="{% static 'media/1.jpeg' %}" alt="Image 5" class="eslide">
+            </a>
+        </div>
+
+        <div class="container">
+            <h1>Painter</h1>
+            <a href="painter">
+                <img src="{% static 'media/1.jpeg' %}" alt="Image 5" class="eslide">
+            </a>
+        </div>
+
+        <div class="container">
+            <h1>Construction</h1>
+            <a href="construction">
+                <img src="{% static 'media/1.jpeg' %}" alt="Image 5" class="eslide">
+            </a>
+        </div>
+
+        <div class="container">
+            <h1>Labour</h1>
+            <a href="labour">
+                <img src="{% static 'media/1.jpeg' %}" alt="Image 5" class="eslide">
+            </a>
+        </div>
+    </section>
+</body>
+
+
+
+<footer>
+
+</footer>
+</html>
