@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from .models import Employee
 
 # Render the index.html template
 def index_view(request):
