@@ -35,7 +35,8 @@ label {
 }
 input[type="text"],
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="number"] {
     width: 90%;
     padding: 5px;
     border: 1px solid #9dd619;
@@ -52,8 +53,4 @@ input[type="password"] {
     cursor: pointer;
     font-size: 16px;
     width: 30%;
-}
-
-.btn:hover {
-    background-color: #0056b3;
 }

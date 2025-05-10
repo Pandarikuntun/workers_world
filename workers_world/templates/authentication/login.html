@@ -10,11 +10,20 @@
 <body>
     <div class="login-container">
         <h1>Login</h1>
-        <form action="login" method="POST">
+        <form action="{% url 'login' %}" method="POST">  <!-- Corrected action to use Django's URL name -->
             {% csrf_token %}
             <div class="form-group">
-                <label for="username">username</label>
-                <input type="username" id="username" name="username" placeholder="Enter your username" required><br> 
+                <input type="checkbox" id="login_as_employee" name="login_as_employee">
+                <label for="login_as_employee">Login as Employee mark it go thwough the adhar only</label>
+                
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username"><br>
+
+                <label for="adhar_number">Aadhaar Number</label>
+                <input type="text" id="adhar_number" name="adhar_number" placeholder="Enter your Aadhaar number"><br>
+
+               
+
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="Enter your password" required>
             </div>

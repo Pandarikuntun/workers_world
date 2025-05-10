@@ -61,16 +61,30 @@ def login_view(request):
 def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
+        adhar_number = request.POST.get('adhar_number')
         password = request.POST.get('password')
+        login_as_employee = request.POST.get('login_as_employee')  # Checkbox value
 
-        # Authenticate the user
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)  # Log the user in
-            return redirect('home')  # Redirect to the home page
-        else:
-            messages.error(request, "Invalid username or password.")
-            return redirect('login_error')  # Redirect to the login error page
+        if login_as_employee:  # Login as Employee
+            try:
+                employee = Employee.objects.get(adhar_number=adhar_number)
+                if employee.password == password:  # Simple password check (not recommended for production)
+                    messages.success(request, f"Welcome, {employee.first_name}!")
+                    return redirect('home')  # Redirect to the home page
+                else:
+                    messages.error(request, "Invalid Aadhaar number or password.")
+                    return redirect('login_error')  # Redirect to the login error page
+            except Employee.DoesNotExist:
+                messages.error(request, "Employee not found.")
+                return redirect('login_error')  # Redirect to the login error page
+        else:  # Login as User
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)  # Log the user in
+                return redirect('home')  # Redirect to the home page
+            else:
+                messages.error(request, "Invalid username or password.")
+                return redirect('login_error')  # Redirect to the login error page
 
     return render(request, "authentication/login.html")
 
@@ -82,6 +96,34 @@ def login_error(request):
 def home_view(request):
     return render(request, "home.html")
 
+
+#employee view page
+def create_employee_view(request):
+    return render(request, "authentication/employee_register.html")
+
+# employee registration 
+def create_employee_veiw(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        adhar_number = request.POST.get('adhar_number')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        # Create and save the employee
+        Employee.objects.create(
+            username=username,
+            first_name=first_name,
+            last_name=last_name,
+            adhar_number=adhar_number,
+            email=email,
+            password=password
+        )
+        return redirect('registration_success')  # Redirect to the success page
+
+    return render(request, "authentication/employee_register.html")
+
 # logout page view
 def logout_view(requesr):
     return redirect('index')
@@ -91,5 +133,6 @@ def logout_view(requesr):
 #electriction page view
 def electriction_view(request):
     return render(request,"designations/electriction.html")
+
 
 

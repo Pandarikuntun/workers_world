@@ -1,5 +1,6 @@
 from django.urls import path
 from .views import (
+    create_employee_veiw,
     electriction_view,
     index_view,
     home_view,
@@ -32,4 +33,7 @@ urlpatterns = [
     path("home/login.html/" , logout_view, name="logout"),
 # home to ectriction page 
     path("home/electriction/", electriction_view, name="electriction"),
+    
+    path("employee_register.html/", create_employee_veiw, name="employee_register"),  # Correct
+
 ]
